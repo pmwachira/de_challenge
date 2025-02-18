@@ -1,6 +1,6 @@
 select
-a.*,
-b.*
+a.logid,
+b.start_time as first_session
 from {{ref('devices_ids')}} a
 left join (
    select

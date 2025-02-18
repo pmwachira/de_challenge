@@ -1,6 +1,6 @@
 SELECT
-    dateadd(day, -num, current_date) as date
-FROM numbers
+    dateadd(day, -num, current_date) as day_
+FROM {{ref('numbers')}}
 WHERE num <= (
     select
         datediff(day, earliest, current_date)

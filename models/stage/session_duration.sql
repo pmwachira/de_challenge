@@ -9,13 +9,13 @@ from (
     (
 select
     *
-    from {{ ref('sessions') }}
+    from {{ ref('sessions_raw') }}
     where type='StartSession'
      )a
 left join(
     select
         *
-    from {{ref('sessions')}}
+    from {{ref('sessions_raw')}}
     where type='EndSession'
 )b
 on a.sessionid = b.sessionid

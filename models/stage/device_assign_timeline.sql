@@ -1,9 +1,9 @@
 select
-    time as assign_time,
-    LEAD(time) OVER (PARTITION BY logid ORDER BY time asc) AS deassign_time,
+    time_ as assign_time,
+    LEAD(time_) OVER (PARTITION BY logid, schoolid ORDER BY time_ asc) AS deassign_time,
     logid,
-    name,
+    schoolid,
     --catch school_names on same id
-    row_number() over (partition by logid order by time) as latest_school_name
-from events_raw
-where type = 'SetName'
+    row_number() over (partition by logid order by time_) as latest_school_assign
+from {{ref('device_assign')}}
+
