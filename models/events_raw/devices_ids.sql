@@ -1,6 +1,6 @@
 select 
-time,
-logid,
- from events_raw
+    time as time_,
+    logid
+from events_raw
 where type = 'SetLogType'
 and logtype = 'Device'
